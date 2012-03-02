@@ -1,0 +1,48 @@
+Documentation
+Method:
+
+{exp:topspin:offers}
+Notes:
+
+There are 2 types of offers in topspin: buy buttons and media widgets. Wrap your template code in {if buy_button}{/if} or {if widget}{/if} to make separate formatting for each type.
+Conditionals:
+
+    {if buy_button} {/if}
+    {if widgets} {/if}
+    All variables within the module can be used as conditionals
+
+Variables:
+Buy Buttons:
+
+    {item_price}
+    {item_name}
+    {item_image}
+    {item_description}
+    {item_embed}
+    Standard EE variables: {switch}, {count}, and {total_results}
+
+Widgets:
+
+    {item_embed}
+
+Parameters:
+
+    tag="my tag name"
+    limit="10"
+
+Example:
+
+{exp:topspin:offers tag="my great tag" limit="10"}
+{if buy_button}
+<div class="float-left productBlock {switch="|||last"}">
+<div class="topspin-grid-item-image">{if item_image}<img src="{item_image}" width="150" height="150"/>{/if}</div>
+<h3 class="text-center caps">{item_name}</h3>
+<div class="topspin-grid-item-price">{item_price}</div>
+<div class="topspin-grid-item-embed">{item_embed}</div>
+</div>
+{/if}
+{if widget}
+{embed_code}
+{/if}
+{/exp:topspin:offers}
+
